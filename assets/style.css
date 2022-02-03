@@ -1,0 +1,81 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --clr: #222327;
+    --mlr: #37383f;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.box{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: var(--clr);
+    border-radius: 15px;
+    opacity: 0.7;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.box.active{
+    width: 400px;
+    height: 400px;
+}
+.box span{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(calc(25px * var(--x)), calc(25px * var(--y)));
+    transition: 0.5s, width 0.5s, height 0.5s, background 0.5s;
+    transition-delay: calc(0.1s * var(--x));
+}
+.box.active span{
+    width: 50px;
+    height: 50px;
+    background: var(--mlr);
+    transform: translate(calc(120px * var(--x)), calc(120px * var(--y)));
+}
+
+.box span ion-icon{
+    opacity : 0;
+    transition: 0.5s;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.box.active span ion-icon{
+    opacity:1;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+.box.active span:hover{
+    background: #fff;
+    transition: 0.3s;
+}
+.box.active span:hover ion-icon{
+    color: green;
+    filter: drop-shadow(0 0 2px green) drop-shadow(0 0 5px green) drop-shadow(0 0 15px green);
+    transition: 0.3s;
+}
